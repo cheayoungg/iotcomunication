@@ -6,14 +6,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="디바이스 로그 조회"
+        android:text="분실물 목록 조회"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/log_start_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="로그 조회 시작" />
+        android:text="조회 시작" />
     <ListView
         android:id="@+id/logList"
         android:layout_width="match_parent"

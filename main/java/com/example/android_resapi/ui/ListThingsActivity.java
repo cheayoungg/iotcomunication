@@ -18,7 +18,8 @@ import com.example.android_resapi.ui.apicall.GetThings;
 public class ListThingsActivity extends AppCompatActivity {
     Button btnCamera;
     ImageView imageView;
-    TextView TextCm;
+    TextView TextLCm;
+    TextView TextRCm;
     TextView TextTime;
     EditText Check;
 
@@ -30,9 +31,26 @@ public class ListThingsActivity extends AppCompatActivity {
        // 디자인 정의
         btnCamera = (Button) findViewById(R.id.btnPhoto);
         imageView = (ImageView) findViewById(R.id.imageView);
-        TextCm = (TextView) findViewById(R.id.textCm);
+        TextLCm = (TextView) findViewById(R.id.textLCm);
+        TextRCm = (TextView) findViewById(R.id.textRCm);
         TextTime = (TextView) findViewById(R.id.textTime);
         Check = (EditText) findViewById(R.id.editCheck);
+
+        Intent intent = getIntent();
+        String time = intent.getStringExtra("time");
+        String Rcm = intent.getStringExtra("Rcm");
+        String Lcm = intent.getStringExtra("Lcm");
+        String find = intent.getStringExtra("find");
+        TextTime.setText(time);
+        TextRCm.setText(Rcm);
+        TextLCm.setText(Lcm);
+
+        //////// 이부분 동작 잘 안됨//////////
+        if(find == "none"){
+            Check.setText("x");
+        }
+        else Check.setText("v");
+        ////////////////////////////////////
 
         //listView =(ListView)findViewById(R.id.listView);
         btnCamera.setOnClickListener(new View.OnClickListener() {

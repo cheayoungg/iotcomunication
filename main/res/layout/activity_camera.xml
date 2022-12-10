@@ -8,54 +8,79 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="카메라촬영"
+        android:text="분실물 촬영"
         android:id = "@+id/btnPhoto"
     />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="615dp"
+        android:layout_height="286dp"
         android:layout_gravity="center_vertical"
-        android:layout_weight="1"
         android:padding="8dp"
         android:scaleType="centerInside" />
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2">
-
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="분실물 찾음 :      "  />
         <EditText
-            android:id="@+id/editCheck"
-            android:layout_width="410dp"
-            android:layout_height="196dp"
-            android:layout_weight="1"
-            android:hint="Check"
-            android:padding="4dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint=" Check "
+            android:id="@+id/editCheck"  />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="들어온 시간 :        " />
 
         <TextView
             android:id="@+id/textTime"
-            android:layout_width="410dp"
-            android:layout_height="196dp"
-            android:layout_weight="1"
-            android:hint="Time"
-            android:padding="4dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint=" Time " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"    >
 
         <TextView
-            android:id="@+id/textCm"
-            android:layout_width="410dp"
-            android:layout_height="196dp"
-            android:layout_weight="1"
-            android:hint="Cm"
-            android:padding="4dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="물건의 크기 L :         " />
+
+        <TextView
+            android:id="@+id/textLCm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint=" Cm " />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="              물건의 크기 R :         " />
+
+        <TextView
+            android:id="@+id/textRCm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint=" Cm " />
     </LinearLayout>
 
 

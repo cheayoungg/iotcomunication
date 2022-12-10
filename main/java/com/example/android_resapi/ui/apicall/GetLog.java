@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import com.example.android_resapi.R;
 import com.example.android_resapi.httpconnection.GetRequest;
 import com.example.android_resapi.ui.DeviceActivity;
-import com.example.android_resapi.ui.DeviceTestActivity;
 import com.example.android_resapi.ui.ListThingsActivity;
 
 public class GetLog extends GetRequest {
@@ -63,20 +62,39 @@ public class GetLog extends GetRequest {
         message.setText("");
         ArrayList<Tag> arrayList = getArrayListFromJSONString(jsonString);
 
+        ////////////////
+        //String time = getStringFromJSONString(jsonString);   // 시간받아옴
+
+        Log.i("T","string"+arrayList.toString());
+        //[[2022-11-24 23:05:18] Finded: none,Left: 1, Right: 1 , [2022-11-24 23:05:12] Finded: none,Left: 1, Right: 1 , [2022-11-24 23:05:28] Finded: none,Left: 1, Right: 1 , [2022-11-24 23:05:07] Finded: none,Left: 1, Right: 1 , [2022-11-24 23:05:23] Finded: none,Left: 1, Right: 1 ,
+
+        //Log.i("stime","time"+arrayList.get(0)); // time[2022-11-24 23:05:18] Finded: none,Left: 1, Right: 1
+
+        //Log.i("time","time : " +time); // time : none    ,   time : 2022-11-24 23:05:18   성공!!!!!!!!!!!1
+
         final ArrayAdapter adapter = new ArrayAdapter(activity,
                 android.R.layout.simple_list_item_1,
                 arrayList.toArray());
         ListView txtList = activity.findViewById(R.id.logList);
         txtList.setAdapter(adapter);
         txtList.setDividerHeight(10);
+
         // 목록 누르면 상세정보로 이동
         txtList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Tag thing = (Tag)adapterView.getAdapter().getItem(i);
+                Tag thing = (Tag)adapterView.getAdapter().getItem(i);
+                Log.i("Ting","Thing: "+ thing);   // Thing: [2022-11-24 23:05:12] Finded: none,Left: 1, Right: 1
+                //String time = getStringFromJSONString(jsonString);
+                Log.i("Tingtime","tingtime: "+ thing.timestamp);  // Tingtime: tingtime: 2022-11-24 23:05:07
+
                 Intent intent = new Intent(activity, ListThingsActivity.class );
-                //Intent intent = new Intent(activity, DeviceTestActivity.class );  // 0
-                //  intent.putExtra("thingShadowURL", urlStr+"/"+thing.name);
+                //Intent intent = new Intent(activity, DeviceActivity.class );  // 0
+                // 시간, L CM , R CM 전달
+                intent.putExtra("time", thing.timestamp);  // 시간전달
+                intent.putExtra("Rcm",thing.right);  // 오른쪽 cm
+                intent.putExtra("Lcm",thing.left);  // 왼쪽 cm
+                intent.putExtra("find",thing.finded);  // 찾았는지 여부
                 activity.startActivity(intent);
             }
         });
@@ -113,6 +131,7 @@ public class GetLog extends GetRequest {
                         jsonObject.getString("left"),
                         jsonObject.getString("right"),
                         jsonObject.getString("timestamp"));
+
                 output.add(thing);
             }
 
@@ -132,7 +151,6 @@ public class GetLog extends GetRequest {
         String fan;
         String timestamp; */
 
-
         String finded;
         String left;
         String right;
@@ -147,14 +165,10 @@ public class GetLog extends GetRequest {
             fan=nfan;
             timestamp=ntimestamp;*/
 
-
-
-
             finded=nfinded;
             left=nleft;
             right=nright;
             timestamp=ntimestamp;
-
 
         }
 
@@ -166,11 +180,35 @@ public class GetLog extends GetRequest {
                     , timestamp, dustsin,dustsout,fan,fanled);*/
 
 
-
-
             return String.format("[%s] Finded: %s,Left: %s, Right: %s "
                     , timestamp, finded,left,right);
 
         }
     }
+
+    //////////////
+    protected String getStringFromJSONString(String jsonString, int i) {
+            String output = null;
+            try {
+                // 처음 double-quote와 마지막 double-quote 제거
+                jsonString = jsonString.substring(1,jsonString.length()-1);
+                // \\\" 를 \"로 치환
+                jsonString = jsonString.replace("\\\"","\"");
+
+                Log.i("kk", "jsonString!="+jsonString);
+
+                JSONObject root = new JSONObject(jsonString);
+                JSONArray jsonArray = root.getJSONArray("data");
+
+
+                JSONObject jsonObject = (JSONObject)jsonArray.get(i);
+
+                String stime = jsonObject.getString("timestamp");
+                output = stime;
+                } catch (JSONException jsonException) {
+                jsonException.printStackTrace();
+            }
+
+            return output;
+       }
 }
