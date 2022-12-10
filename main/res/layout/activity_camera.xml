@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="카메라촬영"
         android:id = "@+id/btnPhoto"
-        />
+    />
 
     <ImageView
         android:id="@+id/imageView"
@@ -20,14 +20,15 @@
         android:layout_weight="1"
         android:padding="8dp"
         android:scaleType="centerInside" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2">
 
-        <TextView
-            android:id="@+id/textItem1"
+        <EditText
+            android:id="@+id/editCheck"
             android:layout_width="410dp"
             android:layout_height="196dp"
             android:layout_weight="1"
@@ -56,6 +57,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="20dp" />
     </LinearLayout>
+
 
 
 </LinearLayout>

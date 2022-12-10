@@ -79,8 +79,27 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+        // 관리자 버튼
         Button listLogsBtn = findViewById(R.id.listLogsBtn);
         listLogsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //String urlstr = getLogsURL.getText().toString();
+                //String urlstr = getLogsURL;
+//                if (urlstr == null || urlstr.equals("")) {
+//                    Toast.makeText(MainActivity.this, "사물로그 조회 API URI 입력이 필요합니다.", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+                Intent intent = new Intent(MainActivity.this, LogActivity.class);
+                //intent.putExtra("https://r9eh795567.execute-api.ap-northeast-2.amazonaws.com/lostItems", getLogsURL);
+                //Log.i(TAG,getLogsURL);
+                startActivity(intent);
+            }
+        });
+
+        // 사용자버튼
+        Button listUserLogsBtn = findViewById(R.id.listUserLogsBtn);
+        listUserLogsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //String urlstr = getLogsURL.getText().toString();

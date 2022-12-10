@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import com.example.android_resapi.R;
 import com.example.android_resapi.httpconnection.GetRequest;
 import com.example.android_resapi.ui.DeviceActivity;
+import com.example.android_resapi.ui.DeviceTestActivity;
+import com.example.android_resapi.ui.ListThingsActivity;
 
 public class GetLog extends GetRequest {
     final static String TAG = "AndroidAPITest";
@@ -72,8 +74,8 @@ public class GetLog extends GetRequest {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //Tag thing = (Tag)adapterView.getAdapter().getItem(i);
-                //Intent intent = new Intent(activity,ListCameraActivity.class );
-                Intent intent = new Intent(activity, DeviceActivity.class );  // 0
+                Intent intent = new Intent(activity, ListThingsActivity.class );
+                //Intent intent = new Intent(activity, DeviceTestActivity.class );  // 0
                 //  intent.putExtra("thingShadowURL", urlStr+"/"+thing.name);
                 activity.startActivity(intent);
             }
